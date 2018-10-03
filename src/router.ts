@@ -3,10 +3,18 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Signup from './views/Signup.vue';
+import Auth from '@okta/okta-vue'
+Vue.use(Auth, {
+  issuer: 'https://maropost.okta.com/oauth2/default',
+  client_id: '{client id}',
+  redirect_uri: 'http://localhost:8080/implicit/callback',
+  scope: 'openid profile email'
+})
 
 Vue.use(Router);
 
-export default new Router({
+
+let router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -14,6 +22,10 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/implicit/callback',
+      component: Auth.handleCallback()
     },
     {
       path: '/about',
@@ -27,6 +39,9 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login,
+        meta: {
+          requiresAuth: true
+        },
     },
     {
       path: '/signup',
@@ -35,3 +50,7 @@ export default new Router({
     },
   ],
 });
+
+
+router.beforeEach(Vue.prototype.$auth.authRedirectGuard())
+export default router
