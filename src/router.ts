@@ -5,9 +5,9 @@ import Login from './views/Login.vue';
 import Signup from './views/Signup.vue';
 import Auth from '@okta/okta-vue'
 Vue.use(Auth, {
-  issuer: 'https://maropost.okta.com/oauth2/default',
-  client_id: '{client id}',
-  redirect_uri: 'http://localhost:8080/implicit/callback',
+  issuer: {domain},
+  client_id: {token},
+  redirect_uri: 'http://localhost:8081/',
   scope: 'openid profile email'
 })
 
@@ -48,6 +48,14 @@ let router = new Router({
       name: 'signup',
       component: Signup,
     },
+    {
+      path: '/posts-manager',
+      name: 'PostsManager',
+      component: () => import(/* webpackChunkName: "posts-manager" */ './components/PostsManager.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    }
   ],
 });
 
