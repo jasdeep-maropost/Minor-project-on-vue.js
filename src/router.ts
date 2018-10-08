@@ -5,9 +5,9 @@ import Login from './views/Login.vue';
 import Signup from './views/Signup.vue';
 import Auth from '@okta/okta-vue'
 Vue.use(Auth, {
-  issuer: {domain},
-  client_id: {token},
-  redirect_uri: 'http://localhost:8081/',
+  issuer: '{issuer}',
+  client_id: '{clientid}',
+  redirect_uri: 'http://localhost:8080/implicit/callback',
   scope: 'openid profile email'
 })
 
@@ -39,9 +39,6 @@ let router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
-        meta: {
-          requiresAuth: true
-        },
     },
     {
       path: '/signup',
@@ -54,7 +51,7 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "posts-manager" */ './components/PostsManager.vue'),
       meta: {
         requiresAuth: true
-      }
+      },
     }
   ],
 });

@@ -1,3 +1,4 @@
+
 <template>
   <ul v-if="posts && posts.length">
     <li v-for="post in posts" :key='post.title'>
@@ -19,7 +20,7 @@ export default {
   async created () {
     axios.defaults.headers.common['Authorization'] = `Bearer ${await this.$auth.getAccessToken()}`
     try {
-      const response = await axios.get(`http://localhost:8081/api/messages`)
+      const response = await axios.get(`http://localhost:8080/api/messages`)
       this.posts = response.data
     } catch (e) {
       console.error(`Errors! ${e}`)
