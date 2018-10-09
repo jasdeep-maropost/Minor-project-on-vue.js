@@ -5,15 +5,15 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
-            <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
+            <v-card class="elevation-12 bottom_up">
+              <v-toolbar dark color="">
                 <v-toolbar-title>Login form</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-tooltip bottom>
                   <v-btn
                     icon
                     large
-                    :href="source"
+                    to="/okta"
                     target="_blank"
                     slot="activator"
                   >
@@ -37,7 +37,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click="onSubmit()">Login</v-btn>
+                <v-btn color="" @click="onSubmit()">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -55,15 +55,15 @@
       drawer: null,
       username: '',
       password: '',
-      successful: true,
-      unsuccessful: false
+      successful: null,
+      unsuccessful: null
     }),
     props: {
       source: String
     },
     methods: {
       onSubmit(){
-        if(this.username == "jas" && this.password == "qwerty")
+        if(this.username == "{user-name}" && this.password == "{password}")
         {
           ('login Successfull');
           this.successful = true;
@@ -80,5 +80,11 @@
     }
   }
 </script>
+<style>
+.bottom_up{
+  bottom: 42px;
+}
+</style>
+
 
 

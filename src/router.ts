@@ -28,12 +28,15 @@ let router = new Router({
       component: Auth.handleCallback()
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/okta',
+      name: 'okta-authetication',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      meta: {
+        requiresAuth: true
+      },
     },
     {
       path: '/login',
@@ -53,6 +56,7 @@ let router = new Router({
         requiresAuth: true
       },
     }
+    
   ],
 });
 
