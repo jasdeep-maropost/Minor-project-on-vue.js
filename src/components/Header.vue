@@ -7,8 +7,8 @@
 			<v-spacer></v-spacer>
 			<v-toolbar-items  >
           <v-btn class="white--text" flat to="/">Home</v-btn>
-          <v-btn class="white--text" flat to="/posts-manager">Posts Manager</v-btn >
-          <v-btn class="white--text" flat href="#" @click.prevent="login" v-if="!activeUser">Login</v-btn >
+          <v-btn class="white--text" flat to="/login">Posts Manager</v-btn >
+          <v-btn class="white--text" flat href="/login" @click.prevent="login" v-if="!activeUser">Login</v-btn >
           <v-btn class="white--text" flat href="#" @click.prevent="logout" v-else>Logout</v-btn >
         </v-toolbar-items>
     </v-toolbar>

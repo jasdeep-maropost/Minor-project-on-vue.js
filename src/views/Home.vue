@@ -13,7 +13,7 @@
               class="black lighten-2 mt-5 offset-2"
               dark
               large
-              href="/pre-made-themes"
+              href="/signup"
             >
               SignUp
             </v-btn>
@@ -22,7 +22,7 @@
               
               dark
               large
-              href="/pre-made-themes"
+              href="/login"
             >
               Login
             </v-btn>
