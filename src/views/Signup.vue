@@ -1,4 +1,10 @@
 <template>
+<div class="signup">
+	<v-toolbar class="black white--text">
+      <v-toolbar-title>
+				<v-text>Signup</v-text>
+			</v-toolbar-title>
+    </v-toolbar>
   <v-form ref="form" v-model="valid" lazy-validation dark >
     <v-text-field
       v-model="firstname"
@@ -48,6 +54,7 @@
     </v-btn>
     <v-btn @click="clear">clear</v-btn>
   </v-form>
+	</div>
 </template>
 
 <script>
@@ -108,6 +115,18 @@
 						document.getElementById('demo').innerHTML= "Password and Confirm password does not match";
 					}
 
+			},
+				password: function(val){
+				if(val == null){
+					document.getElementById('demo').innerHTML="";
+				}
+				if (val == this.password){
+					document.getElementById('demo').innerHTML="";
+				}
+					else{
+						document.getElementById('demo').innerHTML= "Password and Confirm password does not match";
+					}
+
 			}
 			
 		}
@@ -115,6 +134,13 @@
 </script>
 <style>
 form.v-form {
+    padding: 0px 25px;
+
+}
+.signup {
     margin: 0 676px;
+    border: 11px solid;
+    margin-top: 5%;
+		border-radius: 5px;
 }
 </style>
